@@ -1,0 +1,87 @@
+<div class="signin-container">
+  <div class="signin-card">
+    <div class="signin-header">
+      <h1>Welcome Back</h1>
+      
+    </div>
+
+    <form [formGroup]="signinForm" (ngSubmit)="onSubmit()" class="signin-form">
+      <!-- Admin ID Field -->
+      <div class="form-group">
+        <label for="adminId">Admin ID</label>
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input
+            type="text"
+            id="adminId"
+            formControlName="adminId"
+            placeholder="Enter your admin ID"
+            [class.error]="
+              signinForm.get('adminId')?.invalid &&
+              signinForm.get('adminId')?.touched
+            "
+          />
+        </div>
+        <div
+          class="error-message"
+          *ngIf="
+            signinForm.get('adminId')?.invalid &&
+            signinForm.get('adminId')?.touched
+          "
+        >
+          {{ getErrorMessage("adminId") }}
+        </div>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            id="password"
+            formControlName="password"
+            placeholder="Enter your password"
+            [class.error]="
+              signinForm.get('password')?.invalid &&
+              signinForm.get('password')?.touched
+            "
+          />
+          <i
+            class="fas"
+            [class.fa-eye]="!showPassword"
+            [class.fa-eye-slash]="showPassword"
+            (click)="togglePasswordVisibility()"
+          ></i>
+        </div>
+        <div
+          class="error-message"
+          *ngIf="
+            signinForm.get('password')?.invalid &&
+            signinForm.get('password')?.touched
+          "
+        >
+          {{ getErrorMessage("password") }}
+        </div>
+      </div>
+
+
+
+      <!-- Error Message -->
+      <div class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+
+      <!-- Submit Button -->
+      <app-button
+        type="submit"
+        label="Sign In"
+        [disabled]="signinForm.invalid"
+        [loading]="isLoading"
+      ></app-button>
+      
+      
+    </form>
+  </div>
+</div>

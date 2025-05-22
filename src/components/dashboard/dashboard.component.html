@@ -1,0 +1,9 @@
+ <nz-carousel nzAutoPlay>
+      @for (loan of loanType; track loan.LoanProductId) {
+        <div nz-carousel-content>
+          <div>{{loan.Title}}</div>
+          <div>{{loan.MaxLoanAmount}}</div>
+          <div>{{loan.Description}}</div>
+        </div>
+      }
+    </nz-carousel>

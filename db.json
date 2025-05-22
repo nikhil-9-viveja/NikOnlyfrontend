@@ -1,0 +1,56 @@
+{
+  "LoanProducts": [
+    {
+      "LoanProductId": 1,
+      "ImageUrl": "https://example.com/images/home-loan.jpg",
+      "Title": "Home Loan",
+      "Description": "Affordable home loans with flexible repayment options.",
+      "MaxLoanAmount": 5000000.00,
+      "LoanType": "HOME",
+      "IsActive": true,
+      "CreatedAt": "2023-10-01T10:00:00",
+      "CreatedBy": "admin",
+      "ModifiedAt": null,
+      "ModifiedBy": null
+    },
+    {
+      "LoanProductId": 2,
+      "ImageUrl": "https://example.com/images/personal-loan.jpg",
+      "Title": "Personal Loan",
+      "Description": "Quick personal loans for your immediate needs.",
+      "MaxLoanAmount": 1000000.00,
+      "LoanType": "PERSONAL",
+      "IsActive": true,
+      "CreatedAt": "2023-10-01T10:00:00",
+      "CreatedBy": "admin",
+      "ModifiedAt": null,
+      "ModifiedBy": null
+    },
+    {
+      "LoanProductId": 3,
+      "ImageUrl": "https://example.com/images/gold-loan.jpg",
+      "Title": "Gold Loan",
+      "Description": "Instant loans against your gold assets.",
+      "MaxLoanAmount": 2000000.00,
+      "LoanType": "GOLD",
+      "IsActive": true,
+      "CreatedAt": "2023-10-01T10:00:00",
+      "CreatedBy": "admin",
+      "ModifiedAt": null,
+      "ModifiedBy": null
+    },
+    {
+      "LoanProductId": 4,
+      "ImageUrl": "https://example.com/images/gold-loan.jpg",
+      "Title": "Gold Loan",
+      "Description": "Instant loans against your gold assets.",
+      "MaxLoanAmount": 2000000.00,
+      "LoanType": "GOLD",
+      "IsActive": true,
+      "CreatedAt": "2023-10-01T10:00:00",
+      "CreatedBy": "admin",
+      "ModifiedAt": null,
+      "ModifiedBy": null
+    }
+  ]
+}

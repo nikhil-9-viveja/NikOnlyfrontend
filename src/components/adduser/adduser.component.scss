@@ -1,0 +1,25 @@
+.add-user-container {
+  padding: 20px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    h2 {
+      margin: 0;
+      color: #333;
+    }
+  }
+}
+
+:host ::ng-deep {
+  .ant-form-item {
+    margin-bottom: 16px;
+  }
+
+  .ant-modal-body {
+    padding: 24px;
+  }
+}

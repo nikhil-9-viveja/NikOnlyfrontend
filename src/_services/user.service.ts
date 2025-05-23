@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -43,13 +44,22 @@ export class UserService {
     "CreatedAt": "2025-05-19T16:05:00"
   }
 ]
+private url="http://localhost:3000/userRegister"
 
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   getLoanEnquires(){
     return this.LoanEnquiries;
   }
+  getAllUsers():Observable<any>{
+    return this.http.get<any>(this.url)
+  }
+  getUsers(user:any):Observable<any>{
+    return this.http.post<any>(this.url,user)
+  }
+ 
+  
   
   
 }

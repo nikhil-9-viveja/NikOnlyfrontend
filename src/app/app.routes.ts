@@ -7,6 +7,7 @@ import { AdduserComponent } from '../components/adduser/adduser.component';
 import { UserstatusComponent } from '../components/userstatus/userstatus.component';
 import { UsermessageComponent } from '../components/usermessage/usermessage.component';
 import { PagenotfoundComponent } from '../components/pagenotfound/pagenotfound.component';
+import { DocumentsComponent } from '../components/documents/documents.component';
 
 export const routes: Routes = [
   {
@@ -30,6 +31,9 @@ export const routes: Routes = [
   },
   {
     path:'usermessage',component:UsermessageComponent
+  },
+  {
+    path:'documents',component:DocumentsComponent
   },
   {
     path:'**',component:PagenotfoundComponent

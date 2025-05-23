@@ -12,7 +12,8 @@
 .signin{
   font-weight: bold;
   float: right;
-  margin-right: 100px;
+  margin-right: 20px;
+
 }
 .menu-sidebar {
   position: relative;
@@ -87,5 +88,11 @@ nz-content {
 .inner-content {
   padding: 24px;
   background: #fff;
-  height: 100%;
+  height: 100vh;
+  overflow-y: auto;
+
+}
+.request{
+  float: right;
+  margin-right: 20px;
 }

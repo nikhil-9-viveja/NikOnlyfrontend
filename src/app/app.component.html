@@ -30,26 +30,26 @@
         >
       </li>
       <li nz-menu-item nzMatchRouter nzIcon="dashboard">
-        <a routerLink="/dashboar"
+        <a routerLink="/createloan"
           ><nz-icon nzType="form" nzTheme="outline" /> Create Loan</a
         >
       </li>
       <li nz-submenu nzOpen nzTitle="User dashboard" nzIcon="form">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a>Add User</a>
+            <i class="fa-solid fa-user"></i>
+            <a routerLink="/adduser">Add User</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a>User Status</a>
+            <i class="fa-solid fa-bars-progress"></i>
+            <a routerLink="/userstatus"> User Status</a>
           </li>
         </ul>
       </li>
 
       <li nz-menu-item nzMatchRouter>
-        <a
-          ><nz-icon nzType="money-collect" nzTheme="outline" /> Repayments
-          Analysis</a
-        >
+        <i class="fa-solid fa-chart-simple"></i>
+        <a routerLink="/repayment"> Repayments Analysis</a>
       </li>
     </ul>
   </nz-sider>
@@ -62,6 +62,7 @@
             [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
           />
         </span>
+        <span class="request" routerLink="/usermessage"><i class="fa-regular fa-message"></i></span>
         <span class="signin"><a href="/signin">Signin</a></span>
       </div>
     </nz-header>

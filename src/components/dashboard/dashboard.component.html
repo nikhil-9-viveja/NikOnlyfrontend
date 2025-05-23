@@ -1,9 +1,36 @@
- <nz-carousel nzAutoPlay>
-      @for (loan of loanType; track loan.LoanProductId) {
-        <div nz-carousel-content>
-          <div>{{loan.Title}}</div>
-          <div>{{loan.MaxLoanAmount}}</div>
-          <div>{{loan.Description}}</div>
+<div class="loan-carousel-wrapper">
+  <nz-carousel nzAutoPlay>
+    @for (loan of loanType; track loan.LoanProductId) {
+    <div nz-carousel-content class="content">
+      <div class="loan-card">
+        <h2 class="loan-title">{{ loan.Title }}</h2>
+        <p class="loan-amount">₹{{ loan.MaxLoanAmount }}</p>
+        <p class="loan-description">{{ loan.Description }}</p>
+      </div>
+      <div class="image">
+        <img [src]="loan.ImageUrl" alt="" />
+      </div>
+    </div>
+    }
+  </nz-carousel>
+</div>
+
+<div class="emi-plans-container">
+  <h2 class="emi-plans-title">EMI Plans</h2>
+  <div class="emi-plans-grid">
+    @for (emi of emiplans; track emi) {
+    <div class="emi-plan-card">
+      <div class="emi-plan-header">
+        <h3>{{ emi.title }}</h3>
+        <span class="interest-rate">{{ emi.interestRate }}%</span>
+      </div>
+      <div class="emi-plan-details">
+        <div class="detail-item">
+          <span >{{ emi.description }}</span>
         </div>
-      }
-    </nz-carousel>
+        
+      </div>
+    </div>
+    }
+  </div>
+</div>

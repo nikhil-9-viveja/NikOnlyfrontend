@@ -95,4 +95,34 @@ nz-content {
 .request{
   float: right;
   margin-right: 20px;
+  cursor: pointer;
+}
+
+.menu-sidebar[nz-collapsed='true'] .nav-pills li a {
+  display: flex;
+  align-items: center;
+}
+
+.menu-sidebar[nz-collapsed='true'] .nav-pills li a span,
+.menu-sidebar[nz-collapsed='true'] .nav-pills li a i,
+.menu-sidebar[nz-collapsed='true'] .nav-pills li a .menu-label {
+  display: none; /* hide all text spans or labels */
+}
+
+/* Optional: if using icons and spans inside <a> */
+.menu-sidebar .nav-pills li a {
+  display: flex;
+  align-items: center;
+}
+
+.menu-sidebar .nav-pills li a i,
+.menu-sidebar .nav-pills li a nz-icon {
+  margin-right: 10px;
+}
+
+/* Label spacing when sidebar is expanded */
+.menu-sidebar[nz-collapsed='false'] .nav-pills li a span,
+.menu-sidebar[nz-collapsed='false'] .nav-pills li a i,
+.menu-sidebar[nz-collapsed='false'] .nav-pills li a .menu-label {
+  display: inline;
 }

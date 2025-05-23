@@ -1,1 +1,11 @@
-<p>usermessage works!</p>
+<div class="user-message-container">
+  <h2>Loan Enquiries</h2>
+  <app-table
+    [columns]="columns"
+    [data]="data"
+    
+    [loading]="false"
+    (rowClick)="onRowClick($event)"
+  >
+  </app-table>
+</div>

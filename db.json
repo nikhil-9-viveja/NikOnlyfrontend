@@ -131,6 +131,28 @@
       "CreatedBy": "admin@credwise.com",
       "ModifiedAt": null,
       "ModifiedBy": null
+    },
+    {
+      "LoanApplicationId": 7,
+      "UserId": 107,
+      "Gender": "male",
+      "DOB": "1993-11-22",
+      "Aadhaar": "741963852741",
+      "Address": "Flat 6B, Ocean Heights, Vizag, Andhra Pradesh, 530002",
+      "Income": 990000.0,
+      "EmploymentType": "Self-Employed",
+      "LoanProductId": 6,
+      "RequestedAmount": 9000000.0,
+      "RequestedTenure": 60,
+      "InterestRate": 9.6,
+      "Status": "Decision Pending",
+      "DecisionDate": null,
+      "DecisionReason": true,
+      "IsActive": false,
+      "CreatedAt": "2025-05-23T08:15:00",
+      "CreatedBy": "admin@credwise.com",
+      "ModifiedAt": null,
+      "ModifiedBy": null
     }
   ]
 }

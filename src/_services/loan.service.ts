@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -24,9 +26,14 @@ export class LoanService {
       description: 'Long-term loan with attractive interest rates'
     }
   ]
+  private url="http://localhost:3000/LoanApplication"
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
   getEmiPlans(){
     return this.emiPlan
+  }
+  getLoansData():Observable<any>{
+    return this.http.get<any>(this.url)
+
   }
 }

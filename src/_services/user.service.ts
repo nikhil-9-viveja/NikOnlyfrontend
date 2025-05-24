@@ -44,7 +44,7 @@ export class UserService {
     "CreatedAt": "2025-05-19T16:05:00"
   }
 ]
-private url="http://localhost:3000/userRegister"
+private url="https://localhost:7194/api/admin/users/register"
 
 
   constructor(private http:HttpClient) { }
@@ -53,7 +53,7 @@ private url="http://localhost:3000/userRegister"
     return this.LoanEnquiries;
   }
   getAllUsers():Observable<any>{
-    return this.http.get<any>(this.url)
+    return this.http.get<any>("https://localhost:7194/api/admin/users")
   }
   getUsers(user:any):Observable<any>{
     return this.http.post<any>(this.url,user)

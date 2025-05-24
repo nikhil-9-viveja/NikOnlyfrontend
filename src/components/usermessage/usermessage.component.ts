@@ -33,7 +33,6 @@ export class UsermessageComponent implements OnInit {
 
   ngOnInit() {
     this.data = this.userService.getLoanEnquires();
-    
   }
 
   onRowClick(row: any): void {

@@ -6,7 +6,20 @@
     </button>
   </div>
 
-  <app-table [columns]="columns" [data]="data" [loading]="false"> </app-table>
+  <div *ngIf="data.length === 0" class="no-data-message">
+    <nz-empty
+      nzNotFoundImage="simple"
+      nzNotFoundContent="No users found"
+    ></nz-empty>
+  </div>
+
+  <app-table
+    *ngIf="data.length > 0"
+    [columns]="columns"
+    [data]="data"
+    [loading]="false"
+  >
+  </app-table>
 
   <nz-modal
     [(nzVisible)]="isModalVisible"
@@ -18,38 +31,38 @@
       <form [formGroup]="userForm">
         <nz-form-item>
           <nz-form-label>First Name</nz-form-label>
-          <nz-form-control [nzErrorTip]="getErrorMessage('FirstName')">
-            <input nz-input formControlName="FirstName" required />
+          <nz-form-control [nzErrorTip]="getErrorMessage('firstName')">
+            <input nz-input formControlName="firstName" required />
           </nz-form-control>
         </nz-form-item>
 
         <nz-form-item>
           <nz-form-label>Last Name</nz-form-label>
-          <nz-form-control [nzErrorTip]="getErrorMessage('LastName')">
-            <input nz-input formControlName="LastName" required />
+          <nz-form-control [nzErrorTip]="getErrorMessage('lastName')">
+            <input nz-input formControlName="lastName" required />
           </nz-form-control>
         </nz-form-item>
 
         <nz-form-item>
           <nz-form-label>Email</nz-form-label>
-          <nz-form-control [nzErrorTip]="getErrorMessage('Email')">
-            <input nz-input formControlName="Email" type="email" required />
+          <nz-form-control [nzErrorTip]="getErrorMessage('email')">
+            <input nz-input formControlName="email" type="email" required />
           </nz-form-control>
         </nz-form-item>
 
         <nz-form-item>
           <nz-form-label>Phone Number</nz-form-label>
-          <nz-form-control [nzErrorTip]="getErrorMessage('PhoneNumber')">
-            <input nz-input formControlName="PhoneNumber" required />
+          <nz-form-control [nzErrorTip]="getErrorMessage('phoneNumber')">
+            <input nz-input formControlName="phoneNumber" required />
           </nz-form-control>
         </nz-form-item>
 
         <nz-form-item>
           <nz-form-label>Password</nz-form-label>
-          <nz-form-control [nzErrorTip]="getErrorMessage('Password')">
+          <nz-form-control [nzErrorTip]="getErrorMessage('password')">
             <input
               nz-input
-              formControlName="Password"
+              formControlName="password"
               type="password"
               required
             />
@@ -58,5 +71,4 @@
       </form>
     </ng-container>
   </nz-modal>
-
 </div>

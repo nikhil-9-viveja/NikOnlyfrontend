@@ -10,6 +10,7 @@ import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import {
   TableComponent,
   TableColumn,
@@ -26,6 +27,7 @@ import { UserService } from '../../_services/user.service';
     NzButtonModule,
     NzFormModule,
     NzInputModule,
+    NzEmptyModule,
     TableComponent,
   ],
   templateUrl: './adduser.component.html',
@@ -33,10 +35,10 @@ import { UserService } from '../../_services/user.service';
 })
 export class AdduserComponent implements OnInit {
   columns: TableColumn[] = [
-    { header: 'First Name', field: 'FirstName', width: '150px' },
-    { header: 'Last Name', field: 'LastName', width: '150px' },
-    { header: 'Email', field: 'Email', width: '150px' },
-    { header: 'Phone Number', field: 'PhoneNumber', width: '150px' },
+    { header: 'First Name', field: 'firstName', width: '150px' },
+    { header: 'Last Name', field: 'lastName', width: '150px' },
+    { header: 'Email', field: 'email', width: '150px' },
+    { header: 'Phone Number', field: 'phoneNumber', width: '150px' },
   ];
 
   data: any[] = [];
@@ -49,9 +51,9 @@ export class AdduserComponent implements OnInit {
     private fb: FormBuilder
   ) {
     this.userForm = this.fb.group({
-      FirstName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
-      LastName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
-      Email: [
+      firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
+      lastName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
+      email: [
         '',
         [
           Validators.required,
@@ -61,11 +63,11 @@ export class AdduserComponent implements OnInit {
           ),
         ],
       ],
-      PhoneNumber: [
+      phoneNumber: [
         '',
         [Validators.required, Validators.pattern('^[6-9]\\d{9}$')],
       ],
-      Password: [
+      password: [
         '',
         [
           Validators.required,
@@ -120,7 +122,7 @@ export class AdduserComponent implements OnInit {
             nzTitle: 'Error',
             nzContent: 'Failed to register user. Please try again.',
           });
-          console.error('Error registering user:', error);
+          console.error('Error registering user:', error.Message);
         },
       });
     } else {
@@ -144,14 +146,14 @@ export class AdduserComponent implements OnInit {
     }
     if (control?.hasError('pattern')) {
       switch (controlName) {
-        case 'FirstName':
-        case 'LastName':
+        case 'firstName':
+        case 'lastName':
           return 'Only alphabets are allowed';
-        case 'Email':
+        case 'email':
           return 'Please enter a valid email address';
-        case 'PhoneNumber':
+        case 'phoneNumber':
           return 'Phone number must start with 6-9 and have 10 digits';
-        case 'Password':
+        case 'password':
           return 'Password must contain letters, numbers, and special characters';
         default:
           return 'Invalid format';

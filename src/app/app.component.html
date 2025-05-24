@@ -10,7 +10,7 @@
   >
     <div class="sidebar-logo">
       <a routerLink="/">
-        <img src="" alt="logo" />
+        <img src="https://i.ibb.co/gb16BrMs/Chat-GPT-Image-May-24-2025-07-37-17-PM.png"  alt="logo" />
         <h1>CredWise</h1>
       </a>
     </div>
@@ -27,11 +27,20 @@
           ><nz-icon nzType="dashboard" nzTheme="outline" /> <span class="menu-label">Dashboard</span></a
         >
       </li>
-      <li nz-menu-item nzMatchRouter>
-        <a routerLink="/createloan"
-          ><nz-icon nzType="form" nzTheme="outline" /> <span class="menu-label">Create Loan</span></a
-        >
+      <li nz-submenu nzOpen nzTitle="Loan" nzIcon="form">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+           
+            <a routerLink="/createloan"><i class="fa-solid fa-square-plus"></i> Add Loan</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+           
+            <a routerLink="/loantype"> <i class="fa-solid fa-land-mine-on"></i>Loan Types</a>
+          </li>
+         
+        </ul>
       </li>
+      
       <li nz-submenu nzOpen nzTitle="User dashboard" nzIcon="form">
         <ul>
           <li nz-menu-item nzMatchRouter>

@@ -58,12 +58,12 @@ export class ChartComponent {
       this.drawPieChart(
         this.statusChart.nativeElement,
         statusCounts,
-        'Loan Status Distribution'
+        'Loan Status'
       );
       this.drawPieChart(
         this.employmentChart.nativeElement,
         employmentCounts,
-        'Employment Type Distribution'
+        'Employment'
       );
     });
   }

@@ -4,6 +4,7 @@ import {
   Output,
   EventEmitter,
   TemplateRef,
+  ContentChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -26,6 +27,8 @@ export class TableComponent {
   @Input() columns: TableColumn[] = [];
   @Input() data: any[] = [];
   @Input() loading: boolean = false;
+  @Input() actions: boolean = false;
+  @ContentChild('actionTemplate') actionTemplate?: TemplateRef<any>;
   @Output() rowClick = new EventEmitter<any>();
 
   onRowClick(row: any): void {

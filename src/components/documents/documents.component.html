@@ -1,1 +1,20 @@
-<p>documents works!</p>
+<ng-template #radioTpl let-row>
+  <input
+    type="radio"
+    name="selectedRow"
+    [value]="row.bankStatementId"
+    [(ngModel)]="selectedId"
+  />
+</ng-template>
+
+<app-table
+  [data]="repaymentData"
+  [columns]="columns"
+  [loading]="false"
+></app-table>
+
+<app-button
+  [label]="'Submit Document'"
+  [type]="'button'"
+  (click)="onSubmit()"
+></app-button>

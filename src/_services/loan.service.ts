@@ -29,7 +29,7 @@ export class LoanService {
   LoanApplication = [
     {
       LoanApplicationId: 1,
-      UserId: 101,
+      UserId: 1,
       Gender: 'Male',
       DOB: '1990-05-15',
       Aadhaar: '123456789012',
@@ -51,7 +51,7 @@ export class LoanService {
     },
     {
       LoanApplicationId: 2,
-      UserId: 102,
+      UserId: 2,
       Gender: 'Female',
       DOB: '1985-09-10',
       Aadhaar: '987654321098',
@@ -73,7 +73,7 @@ export class LoanService {
     },
     {
       LoanApplicationId: 3,
-      UserId: 103,
+      UserId: 3,
       Gender: 'Male',
       DOB: '1992-12-20',
       Aadhaar: '456123789654',
@@ -95,7 +95,7 @@ export class LoanService {
     },
     {
       LoanApplicationId: 4,
-      UserId: 104,
+      UserId: 4,
       Gender: 'Female',
       DOB: '1995-03-05',
       Aadhaar: '369258147852',
@@ -117,7 +117,7 @@ export class LoanService {
     },
     {
       LoanApplicationId: 5,
-      UserId: 105,
+      UserId: 5,
       Gender: 'Male',
       DOB: '1988-07-14',
       Aadhaar: '852741963159',
@@ -139,7 +139,7 @@ export class LoanService {
     },
     {
       LoanApplicationId: 6,
-      UserId: 106,
+      UserId: 6,
       Gender: 'Female',
       DOB: '1993-11-22',
       Aadhaar: '741963852741',
@@ -161,7 +161,7 @@ export class LoanService {
     },
     {
       LoanApplicationId: 7,
-      UserId: 107,
+      UserId: 7,
       Gender: 'male',
       DOB: '1993-11-22',
       Aadhaar: '741963852741',
@@ -182,7 +182,7 @@ export class LoanService {
       ModifiedBy: null,
     },
   ];
-  private url = 'http://localhost:3000/LoanApplication';
+  private url = 'http://localhost:3000/LoanApplications';
 
   constructor(private http: HttpClient) {}
   getEmiPlans() {
@@ -192,7 +192,7 @@ export class LoanService {
     return of(this.LoanApplication);
   }
   getAllLoans(): Observable<any> {
-    return this.http.get('https://localhost:7194/api/LoanApplications');
+    return this.http.get('http://localhost:3000/LoanApplications');
   }
 
   addLoan(loanData: any): Observable<any> {

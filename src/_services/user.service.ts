@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +44,61 @@ export class UserService {
     "CreatedAt": "2025-05-19T16:05:00"
   }
 ]
+
+userDetails=[
+   {
+    "userId": 1,
+    "email": "admin@credwise.com",
+    "firstName": "System",
+    "lastName": "Administrator",
+    "phoneNumber": "9876543310",
+    "role": "Admin",
+    "isActive": true,
+    "createdBy": "Admin"
+  },
+  {
+    "userId": 2,
+    "email": "sahith@gmail.com",
+    "firstName": "sai",
+    "lastName": "sahith",
+    "phoneNumber": "6677887766",
+    "role": "Admin",
+    "isActive": true,
+    "createdBy": "Admin"
+  },
+  {
+    "userId": 3,
+    "email": "siri@gmail.com",
+    "firstName": "siri",
+    "lastName": "sha",
+    "phoneNumber": "7766556677",
+    "role": "Customer",
+    "isActive": true,
+    "createdBy": "Customer"
+  },
+  {
+    "userId": 4,
+    "email": "phani@gmail.com",
+    "firstName": "phani",
+    "lastName": "indra",
+    "phoneNumber": "9988776652",
+    "role": "Customer",
+    "isActive": true,
+    "createdBy": "Customer"
+  },
+  {
+    "userId": 5,
+    "email": "venkat@gmail.com",
+    "firstName": "ven",
+    "lastName": "kat",
+    "phoneNumber": "6677554488",
+    "role": "Admin",
+    "isActive": true,
+    "createdBy": "Admin"
+  }
+]
+
+
 private url="https://localhost:7194/api/admin/users/register"
 
 
@@ -53,7 +108,7 @@ private url="https://localhost:7194/api/admin/users/register"
     return this.LoanEnquiries;
   }
   getAllUsers():Observable<any>{
-    return this.http.get<any>("https://localhost:7194/api/admin/users")
+    return of(this.userDetails)
   }
   getUsers(user:any):Observable<any>{
     return this.http.post<any>(this.url,user)

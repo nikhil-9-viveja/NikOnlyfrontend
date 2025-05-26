@@ -6,11 +6,13 @@
 }
 nz-carousel {
   height: 190px;
+ 
 }
 
 .loan-carousel-wrapper {
   background-color: #f9f9f9; /* soft light grey */
   padding: 1rem;
+  
 
   ::ng-deep .slick-dots {
     bottom: 10px;
@@ -39,7 +41,8 @@ nz-carousel {
   background-color: #fff;
   border-radius: 16px;
   padding: 2rem;
-  max-width: 500px;
+  // max-width: 500px;
+  width: 800px;
   margin: auto;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;

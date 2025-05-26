@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Admin } from '../_models/admin.model';
 
 @Injectable({
@@ -35,7 +35,7 @@ export class AdminService {
 
   constructor() { }
 
-  getLoanProducts(){
-    return this.LoanProducts
+  getLoanProducts():Observable<any>{
+    return of(this.LoanProducts)
   }
 }

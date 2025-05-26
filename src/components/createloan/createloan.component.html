@@ -1,9 +1,9 @@
-<p>createloan works!</p>
 
-<app-button label="Add Loan" (click)="openAddLoanModal()"></app-button>
+
+<!-- <app-button label="Add Loan" (click)="openAddLoanModal()"></app-button> -->
 
 <!-- Modal for adding loan -->
-<div class="modal" *ngIf="showModal">
+<!-- <div class="modal" *ngIf="showModal">
   <form [formGroup]="loanForm" (ngSubmit)="submitLoan()">
     <input formControlName="userId" placeholder="User ID" />
     <input formControlName="gender" placeholder="Gender" />
@@ -32,22 +32,22 @@
     <button type="submit">Submit</button>
     <button type="button" (click)="closeModal()">Cancel</button>
   </form>
-</div>
+</div> -->
 
 <app-table
   [columns]="[
     { header: 'User ID', field: 'userId' },
     { header: 'Gender', field: 'gender' },
-    { header: 'DOB', field: 'dob' },
-    { header: 'Aadhaar', field: 'aadhaar' },
-    { header: 'Address', field: 'address' },
+   
+  
+    
     { header: 'Income', field: 'income' },
     { header: 'Employment Type', field: 'employmentType' },
     { header: 'Loan Product ID', field: 'loanProductId' },
     { header: 'Requested Amount', field: 'requestedAmount' },
     { header: 'Requested Tenure', field: 'requestedTenure' },
     { header: 'Interest Rate', field: 'interestRate' },
-    { header: 'Purpose', field: 'purpose' }
+    
   ]"
   [data]="loans"
   [loading]="loading"

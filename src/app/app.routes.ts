@@ -10,41 +10,61 @@ import { PagenotfoundComponent } from '../components/pagenotfound/pagenotfound.c
 import { DocumentsComponent } from '../components/documents/documents.component';
 import { CreateloanComponent } from '../components/createloan/createloan.component';
 import { LoantypeComponent } from '../components/loantype/loantype.component';
+import { ReplaymentloanComponent } from '../components/replaymentloan/replaymentloan.component';
 
 export const routes: Routes = [
   {
-    path:'',redirectTo:'/dashboard',pathMatch:'full'
+    path: '',
+    redirectTo: '/dashboard',
+    pathMatch: 'full',
   },
-  {path:'signin',component:SigninComponent},
+  { path: 'signin', component: SigninComponent },
   {
-    path:'signup',component:SignupComponent
-  },
-  {
-    path:'dashboard',component:DashboardComponent
-  },
-  {
-    path:'repayment',component:RepaymentsComponent
+    path: 'signup',
+    component: SignupComponent,
   },
   {
-    path:'adduser',component:AdduserComponent
+    path: 'dashboard',
+    component: DashboardComponent,
   },
   {
-    path:'userstatus',component:UserstatusComponent
+    path: 'repayment',
+    component: RepaymentsComponent,
   },
   {
-    path:'usermessage',component:UsermessageComponent
+    path: 'repayment/user/:userId',
+    component: ReplaymentloanComponent,
   },
   {
-    path:'documents',component:DocumentsComponent
+    path: 'repayment/loan/:loanId',
+    component: ReplaymentloanComponent,
   },
   {
-    path:'createloan',component:CreateloanComponent
+    path: 'adduser',
+    component: AdduserComponent,
   },
   {
-    path:'loantype',component:LoantypeComponent
+    path: 'userstatus',
+    component: UserstatusComponent,
   },
   {
-    path:'**',component:PagenotfoundComponent
-  }
-  
+    path: 'usermessage',
+    component: UsermessageComponent,
+  },
+  {
+    path: 'documents',
+    component: DocumentsComponent,
+  },
+  {
+    path: 'createloan',
+    component: CreateloanComponent,
+  },
+  {
+    path: 'loantype',
+    component: LoantypeComponent,
+  },
+  {
+    path: '**',
+    component: PagenotfoundComponent,
+  },
 ];

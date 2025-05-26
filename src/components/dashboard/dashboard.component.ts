@@ -19,7 +19,10 @@ export class DashboardComponent implements OnInit {
   private loanService = inject(LoanService);
 
   ngOnInit(): void {
-    this.loanType = this.adminService.getLoanProducts();
+    this.adminService.getLoanProducts().subscribe(data=>{
+      console.log(data)
+      this.loanType = data
+    });
     this.emiplans = this.loanService.getEmiPlans();
   }
 }

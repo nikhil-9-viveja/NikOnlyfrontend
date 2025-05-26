@@ -5,6 +5,7 @@
         <th *ngFor="let column of columns" [style.width]="column.width">
           {{ column.header }}
         </th>
+        <th *ngIf="actions">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -26,6 +27,11 @@
             </span>
             <span *ngSwitchDefault>{{ row[column.field] }}</span>
           </ng-container>
+        </td>
+        <td *ngIf="actions">
+          <ng-container
+            *ngTemplateOutlet="actionTemplate || null; context: { $implicit: row }"
+          ></ng-container>
         </td>
       </tr>
     </tbody>

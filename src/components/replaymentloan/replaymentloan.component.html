@@ -1,0 +1,69 @@
+<div class="container">
+  <div *ngIf="loading" class="loading">Loading...</div>
+
+  <div *ngIf="!loading">
+    <!-- User Loans Section (when viewing by user) -->
+    <div *ngIf="userId && !loanId">
+      <h2>User Loans</h2>
+      <app-table 
+        [columns]="[
+          { header: 'Loan ID', field: 'LoanApplicationId', type: 'number' },
+          { header: 'Amount', field: 'RequestedAmount', type: 'number' },
+          { header: 'Status', field: 'Status', type: 'text' }
+        ]" 
+        [data]="loanDetails"
+        (rowClick)="loanId = $event.LoanApplicationId; loadEmis()"
+      ></app-table>
+    </div>
+
+    <!-- Loan Details Section -->
+    <div *ngIf="loanId && loanDetails.length > 0">
+      <h2>Loan Details</h2>
+      <div class="details-grid">
+        <div class="detail-item">
+          <span class="label">Loan ID:</span>
+          <span class="value">{{ loanDetails[0].LoanApplicationId }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Amount:</span>
+          <span class="value">{{ loanDetails[0].RequestedAmount | currency }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Interest Rate:</span>
+          <span class="value">{{ loanDetails[0].InterestRate }}%</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Status:</span>
+          <span class="value">{{ loanDetails[0].Status }}</span>
+        </div>
+      </div>
+
+      <!-- EMI Table Section -->
+      <div *ngIf="emis.length > 0" class="emi-section">
+        <h2>EMI Schedule</h2>
+        <app-table [columns]="emiColumns" [data]="emis" [actions]="true">
+          <ng-template #actionTemplate let-item>
+            <app-button
+              *ngIf="item.Status === 'Pending'"
+              variant="primary"
+              (click)="payEmi(item)"
+            >
+              Pay EMI
+            </app-button>
+            <app-button
+              *ngIf="item.Status === 'Overdue'"
+              variant="secondary"
+              (click)="addFine(item)"
+            >
+              Add Fine
+            </app-button>
+          </ng-template>
+        </app-table>
+      </div>
+    </div>
+
+    <div *ngIf="!loading && loanDetails.length === 0">
+      <p>No loans found</p>
+    </div>
+  </div>
+</div>

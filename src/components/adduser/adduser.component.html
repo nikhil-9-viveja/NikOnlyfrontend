@@ -1,10 +1,17 @@
+
 <div class="add-user-container">
   <div class="header">
-    <h2>User Management</h2>
+    
+    <div class="search-container">
+      <input type="text" placeholder="search for users...">
+    </div>
     <button nz-button nzType="primary" (click)="showModal()">
       <i nz-icon nzType="plus"></i>Add User
     </button>
+
+    
   </div>
+  
 
   <div *ngIf="data.length === 0" class="no-data-message">
     <nz-empty

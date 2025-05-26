@@ -6,11 +6,13 @@
     nzBreakpoint="md"
     [(nzCollapsed)]="isCollapsed"
     [nzTrigger]="null"
-    
   >
     <div class="sidebar-logo">
       <a routerLink="/">
-        <img src="https://i.ibb.co/gb16BrMs/Chat-GPT-Image-May-24-2025-07-37-17-PM.png"  alt="logo" />
+        <img
+          src="https://i.ibb.co/gb16BrMs/Chat-GPT-Image-May-24-2025-07-37-17-PM.png"
+          alt="logo"
+        />
         <h1>CredWise</h1>
       </a>
     </div>
@@ -24,43 +26,50 @@
     >
       <li nz-menu-item nzMatchRouter nzIcon="dashboard">
         <a routerLink="/dashboard"
-          ><nz-icon nzType="dashboard" nzTheme="outline" /> <span class="menu-label">Dashboard</span></a
+          ><nz-icon nzType="dashboard" nzTheme="outline" />
+          <span class="menu-label">Dashboard</span></a
         >
       </li>
       <li nz-submenu nzOpen nzTitle="Loan" nzIcon="form">
         <ul>
           <li nz-menu-item nzMatchRouter>
-           
-            <a routerLink="/createloan"><i class="fa-solid fa-landmark"></i>Loan</a>
+            <a routerLink="/createloan"
+              ><i class="fa-solid fa-landmark"></i>Loan</a
+            >
           </li>
           <li nz-menu-item nzMatchRouter>
-           
-            <a routerLink="/loantype"> <i class="fa-solid fa-land-mine-on"></i>Loan Types</a>
+            <a routerLink="/loantype">
+              <i class="fa-solid fa-land-mine-on"></i>Loan Types</a
+            >
           </li>
-         
         </ul>
       </li>
-      
+
       <li nz-submenu nzOpen nzTitle="User dashboard" nzIcon="form">
         <ul>
           <li nz-menu-item nzMatchRouter>
-           
-            <a routerLink="/adduser"> <i class="fa-solid fa-user"></i> Add User</a>
+            <a routerLink="/adduser">
+              <i class="fa-solid fa-user"></i> Add User</a
+            >
           </li>
           <li nz-menu-item nzMatchRouter>
-           
-            <a routerLink="/documents"> <i class="fa-solid fa-file-arrow-up"></i>Upload Documents</a>
+            <a routerLink="/documents">
+              <i class="fa-solid fa-file-arrow-up"></i>Upload Documents</a
+            >
           </li>
           <li nz-menu-item nzMatchRouter>
-            
-            <a routerLink="/userstatus"><i class="fa-solid fa-bars-progress"></i> User Status</a>
+            <a routerLink="/userstatus"
+              ><i class="fa-solid fa-bars-progress"></i> User Status</a
+            >
           </li>
         </ul>
       </li>
 
       <li nz-menu-item nzMatchRouter>
-        
-        <a routerLink="/repayment"><i class="fa-solid fa-chart-simple"></i> <span class="menu-label">Repayments Analysis</span></a>
+        <a routerLink="/repayment"
+          ><i class="fa-solid fa-chart-simple"></i>
+          <span class="menu-label">Repayments Analysis</span></a
+        >
       </li>
     </ul>
   </nz-sider>
@@ -73,9 +82,11 @@
             [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
           />
         </span>
-        <span class="request" routerLink="/usermessage"
-          ><i class="fa-regular fa-message"></i
-        ></span>
+        <span class="request" routerLink="/usermessage">
+          <i class="fa-regular fa-message"></i>
+          <span *ngIf="showDot" class="dot-indicator"></span>
+        </span>
+
         <span class="signin"><a href="/signin">Signin</a></span>
       </div>
     </nz-header>

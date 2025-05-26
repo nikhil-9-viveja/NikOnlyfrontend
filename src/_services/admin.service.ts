@@ -11,21 +11,21 @@ export class AdminService {
   LoanProducts= [
    {
       "LoanProductId": 1,
-      "ImageUrl": "https://www.axisbank.com/images/default-source/progress-with-us_new/minimum-and-maximum-tenure-for-home-loans.jpg?sfvrsn=fb221c56_2",
+      "ImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC6ru7ArAHzabgDOn63Nf0_OvOL5nTuaiTIg&s",
       "Title": "Home Loan",
       "Description": "Affordable home loans with flexible repayment options.",
       "MaxLoanAmount": 5000000.00
     },
     {
       "LoanProductId": 2,
-      "ImageUrl": "https://www.indusind.com/iblogs/wp-content/uploads/Apply-Instant-Personal-Loan-in-1-Hour-in-Emergency-min.jpg",
+      "ImageUrl": "https://5.imimg.com/data5/SELLER/Default/2022/6/EY/LQ/IC/155588651/personal-loan-500x500.jpg",
       "Title": "Personal Loan",
       "Description": "Quick personal loans for your immediate needs.",
       "MaxLoanAmount": 1000000.00
     },
     {
       "LoanProductId": 3,
-      "ImageUrl": "https://www.icicibank.com/content/dam/icicibank/india/managed-assets/images/blog/what-is-the-process-of-pledging-your-gold-to-secure-high-value-d.webp",
+      "ImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_yXd64PfmINhuOYv-NZ4zvu_Tl4fE90kunQ&s",
       "Title": "Gold Loan",
       "Description": "Instant loans against your gold assets.",
       "MaxLoanAmount": 2000000.00

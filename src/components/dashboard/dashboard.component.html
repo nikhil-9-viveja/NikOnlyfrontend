@@ -3,12 +3,18 @@
     @for (loan of loanType; track loan.LoanProductId) {
     <div nz-carousel-content class="content">
       <div class="loan-card">
-        <h2 class="loan-title">{{ loan.Title }}</h2>
-        <p class="loan-amount">₹{{ loan.MaxLoanAmount }}</p>
-        <p class="loan-description">{{ loan.Description }}</p>
-      </div>
-      <div class="image">
-        <img src={{loan.ImageUrl}} alt={{loan.Title}} />
+        <div>
+          <h2 class="loan-title">{{ loan.Title }}</h2>
+          <p class="loan-amount">₹{{ loan.MaxLoanAmount }}</p>
+          <p class="loan-description">{{ loan.Description }}</p>
+        </div>
+        <div class="image">
+          <img
+            [src]="loan.ImageUrl"
+            [alt]="loan.Title"
+            
+          />
+        </div>
       </div>
     </div>
     }
@@ -35,4 +41,3 @@
 </div>
 
 <app-chart></app-chart>
-

@@ -42,6 +42,13 @@ export class UserService {
     "LoanAmountRequired": 300000.00,
     "LoanPurpose": "Education Loan",
     "CreatedAt": "2025-05-19T16:05:00"
+  },
+  {
+    "Name": "Venkat",
+    "PhoneNumber": "9011223344",
+    "LoanAmountRequired": 300000.00,
+    "LoanPurpose": "Education Loan",
+    "CreatedAt": "2025-05-26T16:05:00"
   }
 ]
 
@@ -54,7 +61,8 @@ userDetails=[
     "phoneNumber": "9876543310",
     "role": "Admin",
     "isActive": true,
-    "createdBy": "Admin"
+    "createdBy": "Admin",
+    "createdAt": '2024-05-01'
   },
   {
     "userId": 2,
@@ -64,7 +72,8 @@ userDetails=[
     "phoneNumber": "6677887766",
     "role": "Admin",
     "isActive": true,
-    "createdBy": "Admin"
+    "createdBy": "Admin",
+    "createdAt": '2024-05-01'
   },
   {
     "userId": 3,
@@ -74,7 +83,8 @@ userDetails=[
     "phoneNumber": "7766556677",
     "role": "Customer",
     "isActive": true,
-    "createdBy": "Customer"
+    "createdBy": "Customer",
+    "createdAt": '2024-05-01'
   },
   {
     "userId": 4,
@@ -84,7 +94,8 @@ userDetails=[
     "phoneNumber": "9988776652",
     "role": "Customer",
     "isActive": true,
-    "createdBy": "Customer"
+    "createdBy": "Customer",
+    "createdAt": '2024-05-01'
   },
   {
     "userId": 5,
@@ -94,7 +105,19 @@ userDetails=[
     "phoneNumber": "6677554488",
     "role": "Admin",
     "isActive": true,
-    "createdBy": "Admin"
+    "createdBy": "Admin",
+    "createdAt": '2024-05-01'
+  },
+  {
+    "userId": 6,
+    "email": "venkat@gmail.com",
+    "firstName": "ven",
+    "lastName": "kat",
+    "phoneNumber": "6677554488",
+    "role": "Admin",
+    "isActive": true,
+    "createdBy": "Admin",
+    "createdAt": '2024-05-26'
   }
 ]
 

@@ -11,6 +11,7 @@ import { DocumentsComponent } from '../components/documents/documents.component'
 import { CreateloanComponent } from '../components/createloan/createloan.component';
 import { LoantypeComponent } from '../components/loantype/loantype.component';
 import { ReplaymentloanComponent } from '../components/replaymentloan/replaymentloan.component';
+import { FixeddepositComponent } from '../components/fixeddeposit/fixeddeposit.component';
 
 export const routes: Routes = [
   {
@@ -62,6 +63,9 @@ export const routes: Routes = [
   {
     path: 'loantype',
     component: LoantypeComponent,
+  },
+  {
+    path:'fd',component:FixeddepositComponent
   },
   {
     path: '**',

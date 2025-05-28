@@ -9,10 +9,10 @@ import { UsermessageComponent } from '../components/usermessage/usermessage.comp
 import { PagenotfoundComponent } from '../components/pagenotfound/pagenotfound.component';
 import { DocumentsComponent } from '../components/documents/documents.component';
 import { CreateloanComponent } from '../components/createloan/createloan.component';
-import { LoantypeComponent } from '../components/loantype/loantype.component';
+import { LoanTypesComponent } from '../components/loantype/loantype.component';
 import { ReplaymentloanComponent } from '../components/replaymentloan/replaymentloan.component';
-import { FixeddepositComponent } from '../components/fixeddeposit/fixeddeposit.component';
-
+// import { FixeddepositComponent } from '../components/fixeddeposit/fixeddeposit.component';
+import { FDTypeComponent } from '../components/fixeddeposit/fixeddeposit.component';
 export const routes: Routes = [
   {
     path: '',
@@ -62,10 +62,11 @@ export const routes: Routes = [
   },
   {
     path: 'loantype',
-    component: LoantypeComponent,
+    component: LoanTypesComponent,
   },
   {
-    path:'fd',component:FixeddepositComponent
+    path:'fd',
+    component:FDTypeComponent
   },
   {
     path: '**',

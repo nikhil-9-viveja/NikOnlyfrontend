@@ -12,8 +12,13 @@ export class LoanProductService {
 
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<LoanProduct[]> {
-    return this.http.get<LoanProduct[]>(this.apiUrl);
+  // getAll(): Observable<LoanProduct[]> {
+  //   return this.http.get<LoanProduct[]>(this.apiUrl);
+  // }
+
+  getAll(includeInactive: boolean = true): Observable<LoanProduct[]> {
+    // return this.http.get<LoanProduct[]>(${this.apiUrl}?includeInactive=${includeInactive});
+    return this.http.get<LoanProduct[]>(`${this.apiUrl}?includeInactive=${includeInactive}`);
   }
 
   update(id: number, data: any): Observable<LoanProduct> {

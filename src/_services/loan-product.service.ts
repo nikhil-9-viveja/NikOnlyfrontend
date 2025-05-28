@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoanProduct } from '../_models/loans.model';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -25,8 +24,10 @@ export class LoanProductService {
     return this.http.put<LoanProduct>(`${this.apiUrl}/${id}`, data);
   }
 
-  deactivate(id: number): Observable<LoanProduct> {
-    return this.http.delete<LoanProduct>(`${this.apiUrl}/${id}`);
+  deactivate(id: number): Observable<any> {
+//     return this.http.delete<any>(`https://localhost:7001/api/LoanProduct/${id}/status
+// `);
+return this.http.put<any>(`https://localhost:7001/api/LoanProduct/${id}/status`,{});
   }
 
   getById(id: number):Observable<LoanProduct> {
@@ -53,4 +54,7 @@ export class LoanProductService {
     return this.http.put<any>(`https://localhost:7001/api/LoanProduct/gold/${id}`, data);
   } 
   
+  toggleStatus(id: number): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${id}/status`, {});
+  }
 }

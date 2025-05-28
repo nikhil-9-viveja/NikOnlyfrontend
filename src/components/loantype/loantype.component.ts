@@ -80,37 +80,39 @@ export class LoanTypesComponent implements OnInit {
 
   openEditModal(loan: LoanProduct): void {
     this.currentLoanId = loan.id;
-    this.loanProductService.getPersonalLoanById(loan.id).subscribe((data: any) => {
-      const detail = data.loanDetail || {};
-      const group: any = {
-        loanProductId: [data.id],
-        imageUrl: [data.imageUrl || data.image || '', Validators.required],
-        title: [data.title, Validators.required],
-        description: [data.description, Validators.required],
-        maxLoanAmount: [data.maxLoanAmount, Validators.required],
-        loanType: [data.loanType, Validators.required],
-        isActive: [data.isActive !== undefined ? data.isActive : true],
-        interestRate: [detail.interestRate, Validators.required],
-        tenureMonths: [detail.tenureMonths, Validators.required],
-        processingFee: [detail.processingFee, Validators.required],
-      };
+    this.loanProductService.getPersonalLoanById(loan.id).subscribe({
+      next: (data: any) => {
+        const detail = data.loanDetail || {};
+        const group: any = {
+          loanProductId: [data.id],
+          imageUrl: [data.imageUrl || data.image || '', Validators.required],
+          title: [data.title, Validators.required],
+          description: [data.description, Validators.required],
+          maxLoanAmount: [data.maxLoanAmount, Validators.required],
+          loanType: [data.loanType, Validators.required],
+          isActive: [data.isActive !== undefined ? data.isActive : true],
+          interestRate: [detail.interestRate, Validators.required],
+          tenureMonths: [detail.tenureMonths, Validators.required],
+          processingFee: [detail.processingFee, Validators.required],
+        };
 
-      if (data.loanType === 'PERSONAL') {
-        group.minSalaryRequired = [detail.minSalaryRequired, Validators.required];
-        
-      }
-      if (data.loanType === 'HOME') {
-        group.downPaymentPercentage = [detail.downPaymentPercentage, Validators.required];
-        
-      }
-      if (data.loanType === 'GOLD') {
-        group.goldPurityRequired = [detail.goldPurityRequired || '', Validators.required];
-        group.repaymentType = [detail.repaymentType || '', Validators.required];
-        
-      }
+        if (data.loanType === 'PERSONAL') {
+          group.minSalaryRequired = [detail.minSalaryRequired, Validators.required];
+          
+        }
+        if (data.loanType === 'HOME') {
+          group.downPaymentPercentage = [detail.downPaymentPercentage, Validators.required];
+          
+        }
+        if (data.loanType === 'GOLD') {
+          group.goldPurityRequired = [detail.goldPurityRequired || '', Validators.required];
+          group.repaymentType = [detail.repaymentType || '', Validators.required];
+          
+        }
 
-      this.editForm = this.fb.group(group);
-      this.isEditModalVisible = true;
+        this.editForm = this.fb.group(group);
+        this.isEditModalVisible = true;
+      }
     });
   }
 
@@ -196,5 +198,27 @@ export class LoanTypesComponent implements OnInit {
 
   handleEditCancel(): void {
     this.isEditModalVisible = false;
+  }
+
+  toggleActiveStatus(loan: any): void {
+    const action = loan.isActive ? 'deactivate' : 'activate';
+    this.modal.confirm({
+      nzTitle: `Are you sure you want to ${action} this loan type?`,
+      nzContent: `This will ${action} the loan type: <b>${loan.title}</b>.`,
+      nzOkText: 'Yes',
+      nzCancelText: 'No',
+      nzOnOk: () => {
+        this.loanProductService.toggleStatus(loan.id).subscribe({
+          next: () => this.fetchLoanTypes(),
+          error: err => {
+            this.modal.error({
+              nzTitle: 'Error',
+              nzContent: 'Failed to update loan status. Please try again.'
+            });
+            console.error('Toggle active status error:', err);
+          }
+        });
+      }
+    });
   }
 }

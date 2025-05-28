@@ -1,7 +1,17 @@
 export interface LoanProduct {
-  LoanProductId: number;
-  ImageUrl: string;
-  Title: string;
-  Description: string;
-  MaxLoanAmount: number;
+  id: number;
+  loanProductId?: number;
+  title: string;
+  imageUrl: string;
+  maxLoanAmount: number;
+  loanType: string;
+  description:string;
+  isActive: boolean;
+  interestRate: number | null;
+  tenureMonths: number | null;
+  processingFee: number | null;
+  minSalaryRequired?: number | null;
+  downPaymentPercentage?: number | null;
+  goldPurityRequired?: string | null;
+  repaymentType: string | null;
 }

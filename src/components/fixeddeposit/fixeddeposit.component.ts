@@ -3,7 +3,7 @@ import { FDTypeService } from '../../_services/fdtype.service';
 import { FDType } from '../../_models/fdtype.model';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { RouterModule } from '@angular/router';
 import { NzTableModule } from 'ng-zorro-antd/table';
@@ -22,7 +22,8 @@ import { NzSwitchModule } from 'ng-zorro-antd/switch';
     RouterModule,
     NzTableModule,
     NzButtonModule,
-    NzSwitchModule
+    NzSwitchModule,
+    NzModalModule
   ],
   templateUrl: './fixeddeposit.component.html',
   styleUrls: ['./fixeddeposit.component.scss']
@@ -33,7 +34,14 @@ export class FDTypeComponent implements OnInit {
   isEditModalVisible = false;
   currentFDTypeId: number | null = null;
 
-  constructor(private fdTypeService: FDTypeService, private fb: FormBuilder, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private fdTypeService: FDTypeService,
+    private fb: FormBuilder,
+    private cdr: ChangeDetectorRef,
+    private modal: NzModalService
+  ) {
+    
+  }
 
   ngOnInit() {
     this.fetchFDTypes();
@@ -43,47 +51,77 @@ export class FDTypeComponent implements OnInit {
     this.fdTypeService.getAll().subscribe(data => this.fdTypes = data);
   }
 
-  openEditModal(fd: FDType) {
-    this.isEditModalVisible = false;
+  openEditModal(fd: any): void {
+    console.log('Opening edit modal for FD:', fd);
     this.currentFDTypeId = fd.fdtypeId;
-    this.fdTypeService.getById(fd.fdtypeId).subscribe({
-      next: (data) => {
-        const {
-          fdtypeId, name, description, interestRate, minAmount, maxAmount, duration, isActive
-        } = data;
-        this.editForm = this.fb.group({
-          fdtypeId: [fdtypeId],
-          name: [name, Validators.required],
-          description: [description, Validators.required],
-          interestRate: [interestRate, Validators.required],
-          minAmount: [minAmount, Validators.required],
-          maxAmount: [maxAmount, Validators.required],
-          duration: [duration, Validators.required],
-          isActive: [isActive]
-        });
-        setTimeout(() => {
-          this.isEditModalVisible = true;
-        }, 0);
-      },
-      error: (err) => {
-        alert('Failed to fetch FD Type details. Please check the console for more info.');
-      }
+    this.editForm = this.fb.group({
+      fdtypeId: [fd.fdtypeId],
+      name: [fd.name, [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
+      description: [fd.description, [Validators.required, Validators.minLength(5), Validators.maxLength(300)]],
+      interestRate: [fd.interestRate, [Validators.required, Validators.min(0), Validators.max(100)]],
+      minAmount: [fd.minAmount, [Validators.required, Validators.min(1), Validators.max(100000000)]],
+      maxAmount: [fd.maxAmount, [Validators.required, Validators.min(1), Validators.max(100000000)]],
+      duration: [fd.duration, [Validators.required, Validators.min(1), Validators.max(1200)]],
+      isActive: [fd.isActive !== undefined && fd.isActive !== null ? fd.isActive : true]
     });
+    this.isEditModalVisible = true;
   }
 
   handleEditOk() {
     if (this.editForm.valid && this.currentFDTypeId !== null) {
-      const payload = this.editForm.value;
-      this.fdTypeService.update(this.currentFDTypeId, payload).subscribe(() => {
-        this.isEditModalVisible = false;
-        this.fetchFDTypes();
+      const formValue = this.editForm.value;
+      const payload = {
+        fdtypeId: formValue.fdtypeId,
+        name: formValue.name,
+        description: formValue.description,
+        interestRate: formValue.interestRate,
+        minAmount: formValue.minAmount,
+        maxAmount: formValue.maxAmount,
+        duration: formValue.duration,
+        isActive: formValue.isActive
+      };
+      console.log('Submitting FD update payload:', payload);
+      this.fdTypeService.update(payload.fdtypeId, payload).subscribe({
+        next: (response) => {
+          console.log('FD update response:', response);
+          this.isEditModalVisible = false;
+          this.fetchFDTypes();
+        },
+        error: (error) => {
+          console.error('FD update error:', error);
+        }
       });
     } else {
       Object.values(this.editForm.controls).forEach(control => control.markAsTouched());
+      console.warn('FD edit form invalid:', this.editForm.errors, this.editForm.value);
     }
   }
 
   handleEditCancel() {
     this.isEditModalVisible = false;
+  }
+
+  toggleActiveStatus(fd: any): void {
+    const action = fd.isActive ? 'deactivate' : 'activate';
+    this.modal.confirm({
+      nzTitle: `Are you sure you want to ${action} this FD type?`,
+      nzContent: `This will ${action} the FD type: <b>${fd.name}</b>.`,
+      nzOkText: 'Yes',
+      nzCancelText: 'No',
+      nzOnOk: () => {
+        this.fdTypeService.toggleStatus(fd.fdtypeId).subscribe({
+          next: () => {
+            this.fetchFDTypes();
+          },
+          error: (err) => {
+            this.modal.error({
+              nzTitle: 'Error',
+              nzContent: 'Failed to update FD type status. Please try again.'
+            });
+            console.error('Toggle active status error:', err);
+          }
+        });
+      }
+    });
   }
 }

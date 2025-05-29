@@ -20,9 +20,9 @@ export class LoanProductService {
     return this.http.get<LoanProduct[]>(`${this.apiUrl}?includeInactive=${includeInactive}`);
   }
 
-  update(id: number, data: any): Observable<LoanProduct> {
-    return this.http.put<LoanProduct>(`${this.apiUrl}/${id}`, data);
-  }
+  // update(id: number, data: any): Observable<LoanProduct> {
+  //   return this.http.put<LoanProduct>(`${this.apiUrl}/${id}`, data);
+  // }
 
   deactivate(id: number): Observable<any> {
 //     return this.http.delete<any>(`https://localhost:7001/api/LoanProduct/${id}/status
@@ -41,9 +41,11 @@ return this.http.put<any>(`https://localhost:7001/api/LoanProduct/${id}/status`,
   updatePersonalLoan(id: number, data: any):Observable<any> {
     return this.http.put<any>(`https://localhost:7001/api/LoanProduct/personal/${id}`, data);
   }
+
   getHomeLoanById(id: number):Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
   } 
+  
   updateHomeLoan(id: number, data: any):Observable<any> {
     return this.http.put<any>(`https://localhost:7001/api/LoanProduct/home/${id}`, data);
   } 
